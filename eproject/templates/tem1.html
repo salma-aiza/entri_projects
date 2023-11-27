@@ -1,0 +1,63 @@
+ {% extends 'inherit.html' %}
+
+ {% block title %} home page {% endblock %}
+ {% block content %}
+ {% if category %}
+<div>
+    <div>
+        <p><a href="{% url 'allproducts' %}">our products category</a></p>
+    </div></div>
+  {% endif %}
+    <div>
+        {% if category %}
+        <img src="{{category.image.url}}" alt="{{category.name}}" style="width:500px;">
+    </div>
+    <br>
+    <div>
+        <h1>{{category.name}}</h1>
+        <p>{{category.description}}</p>
+    </div>
+
+
+ {% endif %}
+ <div> <h1>
+        our products coolection
+    </h1>
+    <pre>
+       A product is any item or service you sell to serve a customer’s need or want.
+        They can be physical or virtual. Physical products include durable goods (like cars, furniture, and computers)
+        and nondurable goods (like food and beverages). Virtual products are offerings of services or experiences
+        (such as education, software,and streaming services). A product may also be a hybrid — including both physical
+        and virtual elements (like a kitchen appliance with its own mobile app). Hybrid products are becoming more common
+        as traditionally analog products incorporate digital technology as a way to better reach and serve customers.
+
+       These categories can help us understand different types of products. But they are not hard and fast rules.
+        For example, software can be considered both a product and a service. Traditionally, you would purchase
+        a physical version of the program and install it on your computer — but today most software products are sold
+        virtually. This approach uses a web-based delivery model and customers pay a recurring subscription fee to access
+        the software. This how the term software-as-a-service (SaaS) originated.</pre>
+ </div>
+
+    <div class="container">
+        <div class="row">
+        {% for product in products %}
+        <div class="col-9 col-sm-12 col-md-4 col-lg-4">
+            <div>
+            <div class="card text-center " style="width: 18rem;">
+                <a href="{{ product.get_url }}">
+                    <img class="card-img-top" src="{{product.image.url}}" style="width:200px; height=200px;" alt="{{product.name}}"></a>
+       <div class="card-body">
+
+               <h5 class="card-title">{{product.name}}</h5>
+         <p class="card-text">{{product.price}}</p>
+       </div>
+      </div>
+    </div>
+        </div>
+
+        {% endfor %}
+            </div>
+    </div>
+
+
+ {% endblock %}

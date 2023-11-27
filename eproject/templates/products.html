@@ -1,0 +1,37 @@
+{% extends 'inherit.html' %}
+
+ {% block title %} e-shore products{% endblock %}
+ {% block content %}
+<div class="row">
+    <div class="mx_auto">
+        <p><a href = "{% url 'allproducts' %}">Home</a> | <a href="{{product.category.get_url}}">{{product.category}}</a> | {{product.name}} </p>
+
+    </div>
+</div>
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col-2 col-sm-12 col-md-12 col-lg-6 text-center">
+          <div style="min-min-width:18rem">
+
+              <img src="{{product.image.url}}" alt="{{product.name}}">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+
+           <h1>
+            {{product.name}}
+           </h1>
+            <p>$ {{product.price}}</p>
+            <p>product descriptions</p>
+            <p class="text-justify">{{product.description}}</p>
+           {% if product.stock <= 0 %}
+            <p><b>out of stock</b></p>
+            {% else %}
+            <a class="btn btn-secondary" href="#">add to card</a>
+             {% endif %}
+            </div>
+
+    </div>
+</div>
+{% endblock %}

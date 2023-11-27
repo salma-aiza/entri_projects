@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block title %}home page{% endblock %}
+{% block content %}
+<h1> this home page</h1>
+{% for i in fruits %}
+<h2>{{i}}</h2>
+{% endfor %}
+{% endblock %}

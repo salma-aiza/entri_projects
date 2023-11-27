@@ -1,0 +1,16 @@
+{% extends 'inherit.html' %}
+{% load static %}
+ {% block title %}profile page {% endblock %}
+ {% block content %}
+<h1> this is profile page</h1>
+{% for i in product_list %}
+{{ i.name }}
+{{ i.description }}
+{{ i.price }}
+<img src="{{ i. image.url }}" width="250" height="250">
+{{ i. category }}
+{{ i.available }}
+{{ i.stock }}
+{{ i.created_at }}
+{% endfor %}
+{% endblock %}
